@@ -7,3 +7,5 @@ export interface Product {
   image?: string;
   [key: string]: any; 
 }
+
+export type Category = string;

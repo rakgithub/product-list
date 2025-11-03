@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 export const ProductSkeleton = memo(() => (
   <div className="bg-white rounded-xl overflow-hidden shadow-sm animate-pulse">

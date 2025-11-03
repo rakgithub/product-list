@@ -1,3 +1,4 @@
+
 import React, { memo } from 'react';
 import { Product } from '../../../types/product.types';
 

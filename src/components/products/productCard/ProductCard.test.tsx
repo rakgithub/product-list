@@ -4,11 +4,11 @@ import { ProductCard } from './ProductCard';
 // MOCK DATA
 const mockProduct = {
   id: 1,
-  title: 'Luxury Leather Wallet with RFID Protection and Vintage Finish',
+  title: 'Luxury Leather Wallet',
   price: 59.99,
   category: 'accessories',
   image: 'http://example.com/wallet.jpg',
-  description: 'A brief description.',
+  description: 'Luxury Leather Wallet.',
 };
 
 describe('ProductCard', () => {
