@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { ProductProvider } from './context/ProductContext';
+import { ProductGrid } from './components/products/productGrid/ProductGrid';
+import { Header } from './components/header/Header';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    return (
+    <ProductProvider>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <Header />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <ProductGrid />
+        </main>
+      </div>
+    </ProductProvider>
   );
 }
 
