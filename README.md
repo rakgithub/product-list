@@ -2,18 +2,6 @@
 
 A modern, performant product listing application built with React, TypeScript, and Tailwind CSS. Features infinite scroll, real-time search, category filtering, and a clean architecture following best practices.
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Architecture](#architecture)
-- [Available Scripts](#available-scripts)
-- [Testing](#testing)
-- [Implementation Notes](#implementation-notes)
-- [Future Enhancements](#future-enhancements)
-
 ## ✨ Features
 
 ### ✅ Implemented Features (As Per Requirements)
@@ -121,86 +109,6 @@ A modern, performant product listing application built with React, TypeScript, a
 npm run build
 ```
 
-The optimized production build will be in the `build` folder.
-
-## 🏗️ Architecture
-
-### Clean Architecture Principles
-
-1. **Separation of Concerns**
-   - Context: Presentation layer (provides data to components)
-   - Custom Hooks: Business logic layer
-   - Services: Data access layer
-   - Components: UI layer
-
-2. **Single Responsibility**
-   - Each hook handles one concern (filtering, pagination, fetching)
-   - Components focus only on rendering
-   - Services handle only API calls
-
-3. **Type Safety**
-   - Strict TypeScript configuration
-   - All functions and components fully typed
-   - Compile-time error detection
-
-### Data Flow
-
-```
-API (FakeStore)
-    ↓
-Service Layer (productApi.ts)
-    ↓
-Custom Hook (useProducts.ts) → Business Logic
-    ↓
-Context (ProductContext.tsx) → State Provider
-    ↓
-Components → UI Rendering
-```
-
-## 📜 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm start` | Start development server |
-| `npm run build` | Build for production |
-| `npm test` | Run test suite |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format code with Prettier |
-| `npm run type-check` | Check TypeScript types without building |
-
-## 🧪 Testing
-
-### Run Tests
-
-```bash
-npm test
-```
-
-### Run Tests in Watch Mode
-
-```bash
-npm test -- --watch
-```
-
-### Test Coverage
-
-```bash
-npm test -- --coverage
-```
-
-### Example Test (ProductCard)
-
-Located in `src/components/products/ProductCard/ProductCard.test.tsx`
-
-```typescript
-test('renders product information correctly', () => {
-  render(<ProductCard product={mockProduct} />);
-  
-  expect(screen.getByText('Test Product')).toBeInTheDocument();
-  expect(screen.getByText('$29.99')).toBeInTheDocument();
-});
-```
-
 ## 📝 Implementation Notes
 
 ### 1. ⚠️ Add to Cart Button
@@ -245,25 +153,6 @@ As per requirements, infinite scroll was implemented instead of traditional pagi
 
 **Chosen:** React Context API ✅
 
-**Why Context over Redux:**
-- Simpler setup for this use case
-- No external dependencies (except React)
-- Sufficient for app's complexity level
-- Better performance with proper optimization
-
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
 ## 👨‍💻 Developer Notes
 
 ### Performance Optimizations Implemented
@@ -284,14 +173,5 @@ This project is open source and available under the MIT License.
 - ✅ Meaningful variable names
 - ✅ Comments where necessary
 
-### Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
-
----
 
 **Built with using React + TypeScript + Tailwind CSS**
