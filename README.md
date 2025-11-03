@@ -1,4 +1,4 @@
-# 🛍️ ShopHub - Product List Application
+# 🛍️ Product List Application
 
 A modern, performant product listing application built with React, TypeScript, and Tailwind CSS. Features infinite scroll, real-time search, category filtering, and a clean architecture following best practices.
 
