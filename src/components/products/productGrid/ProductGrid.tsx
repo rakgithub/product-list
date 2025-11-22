@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { ShoppingBag } from 'lucide-react';
-import { useProducts } from '../../../context/ProductContext';
 import { useInfiniteScroll } from '../../../hooks/useInfiniteScroll';
 import { ProductSkeleton } from '../../common/skeleton/ProductSkeleton';
 import { ProductCard } from '../productCard/ProductCard';
+import { EmptyProducts } from '../emptyProducts/EmptyProducts';
+import { useProducts } from '../../../hooks/useProducts';
 
 export const ProductGrid = memo(() => {
-  const { products, loading, hasMore, loadMore } = useProducts();
+  const { products, loading, hasMore, loadMore, handleAddToCart } = useProducts();
   const lastElementRef = useInfiniteScroll(loadMore, hasMore, loading);
 
   if (loading && products.length === 0) {
@@ -21,14 +21,9 @@ export const ProductGrid = memo(() => {
 
   if (products.length === 0) {
     return (
-      <div className="text-center py-20">
-        <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-gray-600 mb-2">No products found</h3>
-        <p className="text-gray-400">Try adjusting your search or filter</p>
-      </div>
+      <EmptyProducts />
     );
   }
-
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -36,11 +31,11 @@ export const ProductGrid = memo(() => {
           if (products.length === index + 1) {
             return (
               <div ref={lastElementRef} key={product.id}>
-                <ProductCard product={product} />
+                <ProductCard product={product} addToCart={handleAddToCart} />
               </div>
             );
           }
-          return <ProductCard key={product.id} product={product} />;
+          return <ProductCard key={product.id} product={product} addToCart={handleAddToCart} />;
         })}
       </div>
       {loading && (

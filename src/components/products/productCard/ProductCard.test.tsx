@@ -13,7 +13,7 @@ const mockProduct = {
 
 describe('ProductCard', () => {
   it('should render the product title, category, and price', () => {
-    render(<ProductCard product={mockProduct} />);
+    render(<ProductCard product={mockProduct} addToCart={() => {}} />);
 
     expect(screen.getByRole('heading', { level: 3, name: mockProduct.title })).toBeInTheDocument();
     expect(screen.getByText(new RegExp(mockProduct.category, 'i'))).toBeInTheDocument();
@@ -21,7 +21,7 @@ describe('ProductCard', () => {
   });
 
   it('should render the product image when the image URL is provided', () => {
-    render(<ProductCard product={mockProduct} />);
+    render(<ProductCard product={mockProduct} addToCart={() => {}} />);
     
     const productImage = screen.getByRole('img', { name: mockProduct.title });
 
@@ -31,7 +31,7 @@ describe('ProductCard', () => {
   });
 
   it('should render the "Add to Cart" button', () => {
-    render(<ProductCard product={mockProduct} />);
+    render(<ProductCard product={mockProduct} addToCart={() => {}} />);
 
     const button = screen.getByRole('button', { name: /add to cart/i });
     

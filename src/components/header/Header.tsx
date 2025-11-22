@@ -1,6 +1,6 @@
 import { ShoppingBag } from 'lucide-react';
 import { SearchBar } from '../common/searchBar/SearchBar';
-import { CategoryFilter } from '../common/categoryFilter/CategoryFilter';
+import { CartButton } from '../common/cartButton/CartButton';
 
 export const Header = () => (
   <header className="bg-white shadow-sm sticky top-0 z-10">
@@ -11,8 +11,8 @@ export const Header = () => (
           <h1 className="text-3xl font-bold text-gray-900">Product List</h1>
         </div>
         <SearchBar />
+        <CartButton />
       </div>
-      <CategoryFilter />
     </div>
   </header>
 );

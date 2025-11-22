@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { useProducts } from '../../../context/ProductContext';
+import { useProducts } from '../../../hooks/useProducts';
 
 export const CategoryFilter: React.FC = memo(() => {
   const { categories, selectedCategory, handleCategoryChange } = useProducts();

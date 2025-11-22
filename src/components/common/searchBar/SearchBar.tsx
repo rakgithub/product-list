@@ -1,6 +1,6 @@
 import React, { memo, ChangeEvent } from 'react';
 import { Search } from 'lucide-react';
-import { useProducts } from '../../../context/ProductContext';
+import { useProducts } from '../../../hooks/useProducts';
 
 export const SearchBar: React.FC = memo(() => {
   const { searchQuery, handleSearch } = useProducts();

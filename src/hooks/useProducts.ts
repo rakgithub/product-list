@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { productApi } from '../services/api/productApi';
 import { ITEMS_PER_PAGE } from '../utils/constants';
 import { Category, Product } from '../types/product.types';
+import { useCartStore } from '../store/cartStore';
+import { useProductStore } from '../store/productStore';
 
 interface UseProductsReturn {
   products: Product[];
@@ -13,10 +15,15 @@ interface UseProductsReturn {
   loadMore: () => void;
   handleCategoryChange: (category: string) => void;
   handleSearch: (query: string) => void;
+  handleAddToCart: (product: Product) => void;
 }
 
 export const useProducts = (): UseProductsReturn => {
-  const [products, setProducts] = useState<Product[]>([]);
+
+  const addToCart = useCartStore(state => state.addToCart);
+
+  //const [products, setProducts] = useState<Product[]>([]);
+  const {products, setProducts } = useProductStore();
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -46,7 +53,7 @@ export const useProducts = (): UseProductsReturn => {
         console.error('Error fetching products:', err);
         setLoading(false);
       });
-  }, [selectedCategory]);
+  }, [selectedCategory, setProducts]);
 
   const filteredProducts = useMemo(() => {
     if (!searchQuery.trim()) return products;
@@ -72,7 +79,6 @@ export const useProducts = (): UseProductsReturn => {
   }, [hasMore, loading]);
 
   const handleCategoryChange = useCallback((category: string) => {
-    setProducts([]);
     setLoading(true);
     setSelectedCategory(category);
     setPage(1);
@@ -84,6 +90,10 @@ export const useProducts = (): UseProductsReturn => {
     setPage(1);
   }, []);
 
+  const handleAddToCart = useCallback((product: Product) => {
+    addToCart(product)
+  }, [addToCart]);
+
   return {
     products: paginatedProducts,
     categories,
@@ -94,5 +104,6 @@ export const useProducts = (): UseProductsReturn => {
     loadMore,
     handleCategoryChange,
     handleSearch,
+    handleAddToCart,
   };
 };
